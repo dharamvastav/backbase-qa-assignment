@@ -1,0 +1,19 @@
+{
+  "testFiles": "**/functional/*.*",
+  "viewportWidth": 1200,
+  "viewportHeight": 800,
+  "baseUrl": "https://qa-task.backbasecloud.com",
+  "browser": "firefox",
+  "screenshotOnRunFailure": true,
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "reporterEnabled": "mochawesome",
+    "mochawesomeReporterOptions": {
+      "reportDir": "cypress/reports/mocha",
+      "quite": true,
+      "overwrite": false,
+      "html": false,
+      "json": true
+    }
+  }
+}
