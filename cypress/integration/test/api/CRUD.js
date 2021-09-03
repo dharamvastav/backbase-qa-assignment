@@ -5,8 +5,8 @@ describe("API tests", function() {
             url: '/api/articles',
             method: 'POST',
             auth: {
-                username: Cypress.env('username'),
-                password: Cypress.env('password')
+                username: 'candidatex',
+                password: 'qa-is-cool'
             },
             headers: {
                 'jwtauthorization' : Cypress.env('jwtToken'),
@@ -31,8 +31,8 @@ describe("API tests", function() {
             url: '/api/articles?limit=10&offset=0',
             method: 'GET',
             auth: {
-                username: Cypress.env('username'),
-                password: Cypress.env('password')
+                username: 'candidatex',
+                password: 'qa-is-cool'
             },
             headers: {
                 'jwtauthorization' : Cypress.env('jwtToken'),

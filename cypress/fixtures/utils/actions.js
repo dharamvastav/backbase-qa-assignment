@@ -22,3 +22,23 @@ export const createNewArticle = (title,desc,body,tags) => {
       .get(".btn-primary").click()
       .get(".btn-primary").should('include.text','Post Comment')
 }
+
+export const selectArticle = (article) => {
+      cy.contains('Home').click()
+        .get('a.nav-link').contains('Global Feed').click()
+        .get('a.preview-link').contains(article).click()
+}
+
+export const addCommentToArticle = (article, comment, author) => {
+      selectArticle(article)
+
+      cy.get("[placeholder='Write a comment...']").click().type(comment)
+        .get(".btn-primary").contains('Post Comment').click()
+        .get(".card-text").should('include.text',comment)
+        .get(".card-footer").should('include.text',author)
+}
+
+export const deleteCommentFromArticle = (article, comment, author) => {
+    cy.get(".ion-trash-a").last().click()
+      .get(".card-footer").should('not.include.text',comment)
+}
