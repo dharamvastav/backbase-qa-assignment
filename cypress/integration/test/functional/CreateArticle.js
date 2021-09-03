@@ -20,7 +20,7 @@ describe('New Article creation', () => {
       it("User should be able to add-delete a comment to the article", () => {
           articleTitle = 'Article-Title'+ Date.now().toString()
           createNewArticle(articleTitle,"Article on test automation", "All about automation!","automation")
-          addCommentToArticle(articleTitle,"Commenting on the article!","darknight1")
+          addCommentToArticle(articleTitle,"Commenting on the article!")
           deleteCommentFromArticle(articleTitle,comment)
       })
  });

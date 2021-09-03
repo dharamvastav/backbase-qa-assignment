@@ -1,5 +1,5 @@
 {
-  "testFiles": "**/functional/*.*",
+  "testFiles": "**/*/*.*",
   "viewportWidth": 1600,
   "viewportHeight": 1200,
   "baseUrl": "https://qa-task.backbasecloud.com",

@@ -25,15 +25,15 @@ export const selectArticle = (article) => {
         .get('a.preview-link').contains(article).click()
 }
 
-export const addCommentToArticle = (article, comment, author) => {
+export const addCommentToArticle = (article, comment) => {
       selectArticle(article)
       cy.get("[placeholder='Write a comment...']").click().type(comment)
         .get(".btn-primary").contains('Post Comment').click()
-        assert(cy.get(".card-footer").last().should('have.text',author))
+        assert(cy.get(".card-text").last().should('include.text',comment))
 }
 
 export const deleteCommentFromArticle = (article, comment) => {
-      cy.get(".ion-trash-a").click()
-        assert(cy.get(".card-footer").last().should('have.text',comment))
+      cy.get(".ion-trash-a").last().click()
+        assert(cy.get(".card-footer").should('not.have.text',comment))
 
 }
