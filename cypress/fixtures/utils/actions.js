@@ -1,10 +1,6 @@
 const articles = require('../../fixtures/locators/articles')
 const login = require('../../fixtures/locators/login')
 
-//export const clickOnArticle(article, ()=> {
-//    cy.get(ARTICLE_SIGNUP_LNK).click()
-//})
-
 export const loginToApp = (username,password) => {
     cy.get("[href='/login']").click()
       .get("[placeholder='Email']").click().type(username)
@@ -20,7 +16,7 @@ export const createNewArticle = (title,desc,body,tags) => {
       .get("[formcontrolname='body']").click().type(body)
       .get("[placeholder='Enter tags']").click().type(tags)
       .get(".btn-primary").click()
-      .get(".btn-primary").should('include.text','Post Comment')
+      assert(cy.get(".btn-primary").should('include.text','Post Comment'))
 }
 
 export const selectArticle = (article) => {
@@ -31,14 +27,13 @@ export const selectArticle = (article) => {
 
 export const addCommentToArticle = (article, comment, author) => {
       selectArticle(article)
-
       cy.get("[placeholder='Write a comment...']").click().type(comment)
         .get(".btn-primary").contains('Post Comment').click()
-        .get(".card-text").should('include.text',comment)
-        .get(".card-footer").should('include.text',author)
+        assert(cy.get(".card-footer").last().should('have.text',author))
 }
 
-export const deleteCommentFromArticle = (article, comment, author) => {
-    cy.get(".ion-trash-a").last().click()
-      .get(".card-footer").should('not.include.text',comment)
+export const deleteCommentFromArticle = (article, comment) => {
+      cy.get(".ion-trash-a").click()
+        assert(cy.get(".card-footer").last().should('have.text',comment))
+
 }

@@ -1,10 +1,11 @@
 {
-  "testFiles": "**/*/*.*",
+  "testFiles": "**/functional/*.*",
   "viewportWidth": 1600,
   "viewportHeight": 1200,
   "baseUrl": "https://qa-task.backbasecloud.com",
   "browser": "firefox",
   "screenshotOnRunFailure": true,
+  "screenshotsFolder": "cypress/reports/mochareports/assets",
   "reporter": "cypress-multi-reporters",
   "reporterOptions": {
     "reporterEnabled": "mochawesome",

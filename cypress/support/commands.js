@@ -31,3 +31,29 @@ Cypress.Commands.add("navigate", ()=>{
             }
      })
 })
+
+Cypress.Commands.add("CreateArticle", ()=> {
+    cy.request({
+                url: '/api/articles',
+                method: 'POST',
+                auth: {
+                    username: 'candidatex',
+                    password: 'qa-is-cool'
+                },
+                headers: {
+                    'jwtauthorization' : Cypress.env('jwtToken'),
+                    'content-type' : 'application/json'
+                },
+                body : {
+                        'article' : {
+                          'tagList' :['api'],
+                          'title' : 'NewArticle',
+                          'description' : 'NewArticle',
+                          'body' : 'NewArticle'
+                       }
+                }
+            }).then(function(response) {
+                const article = response.body.article;
+                expect(article.slug).to.include('newarticle')
+            })
+})
