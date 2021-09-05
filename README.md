@@ -24,3 +24,9 @@
     
 ### Report location
     Path: cypress/reports/mochareports/report.html
+    
+### Test cases and Scenario Outlook
+    Conduit.pdf is added as mindmap over plain test cases
+    
+### Overall Evaluation Report
+    https://prezi.com/view/b7iHMRy9trMEefrS8lLN/
