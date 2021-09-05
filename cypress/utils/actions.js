@@ -1,6 +1,5 @@
-const articles = require('../../fixtures/locators/articles')
-const login = require('../../fixtures/locators/login')
 
+//Resuable user actions to chain them to form e2e flow
 export const loginToApp = (username,password) => {
     cy.get("[href='/login']").click()
       .get("[placeholder='Email']").click().type(username)
@@ -22,18 +21,24 @@ export const createNewArticle = (title,desc,body,tags) => {
 export const selectArticle = (article) => {
       cy.contains('Home').click()
         .get('a.nav-link').contains('Global Feed').click()
-        .get('a.preview-link').contains(article).click()
+        .get('.article-preview').contains(article).click()
 }
 
 export const addCommentToArticle = (article, comment) => {
       selectArticle(article)
       cy.get("[placeholder='Write a comment...']").click().type(comment)
         .get(".btn-primary").contains('Post Comment').click()
-        assert(cy.get(".card-text").last().should('include.text',comment))
+       assert(cy.get(".card-text").last().should('include.text',comment))
 }
 
 export const deleteCommentFromArticle = (article, comment) => {
       cy.get(".ion-trash-a").last().click()
         assert(cy.get(".card-footer").should('not.have.text',comment))
+}
 
+export const editArticle = (title,desc,body,tags) => {
+    cy.get(".btn-outline-secondary").contains(" Edit Article ").click()
+    createNewArticle(title,desc,body,tags)
+    assert(cy.get(".banner").should('include.text',title))
+    assert(cy.get(".btn-primary").should('include.text','Post Comment'))
 }
