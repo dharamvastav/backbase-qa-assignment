@@ -3,3 +3,6 @@ reports
 screenshots
 videos
 node_modules
+.DS_Store
+cypress/.DS_Store
+package-lock.json

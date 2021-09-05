@@ -5,6 +5,7 @@
   "baseUrl": "https://qa-task.backbasecloud.com",
   "browser": "firefox",
   "screenshotOnRunFailure": true,
+  "failOnStatusCode": false,
   "screenshotsFolder": "cypress/reports/mochareports/assets",
   "reporter": "cypress-multi-reporters",
   "reporterOptions": {
